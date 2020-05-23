@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/mainFragment">
 
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="de.traendy.patterns.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment"
+        >
+        <action
+            android:id="@+id/action_mainFragment_to_designPatternDetailFragment"
+            app:destination="@id/designPatternDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/designPatternDetailFragment"
+        android:name="de.traendy.patterns.ui.detail.DesignPatternDetailFragment"
+        android:label="design_pattern_detail_fragment"
+        tools:layout="@layout/design_pattern_detail_fragment" />
 </navigation>
