@@ -32,7 +32,9 @@ class MainFragment : Fragment() {
                 false
         )
         binding.lifecycleOwner = this
+        binding.nextButton.setOnClickListener {
 
+        }
         return binding.root
     }
 
