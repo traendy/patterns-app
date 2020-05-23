@@ -11,13 +11,15 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
+        PatternApplicationModule::class,
         AndroidSupportInjectionModule::class,
-        MainModule ::class
+        MainModule::class,
+        DesignPatternDetailModule::class
     ]
 )
-interface ApplicationComponent : AndroidInjector<PatternsApplication> {
+interface PatternsApplicationComponent : AndroidInjector<PatternsApplication> {
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance context: Context): ApplicationComponent
+        fun create(@BindsInstance context: Context): PatternsApplicationComponent
     }
 }
