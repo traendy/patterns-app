@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import dagger.android.support.DaggerFragment
 
 import de.traendy.patterns.R
@@ -24,6 +25,7 @@ class DesignPatternDetailFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<DesignPatternDetailViewModel> { viewModelFactory }
+    private val args: DesignPatternDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +39,7 @@ class DesignPatternDetailFragment : DaggerFragment() {
         )
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        viewModel.loadDesignPatternById()
+        viewModel.loadDesignPatternById(args.designPatternId)
         context?.let { binding.structureImage.setImageDrawable(ContextCompat.getDrawable(it, R.drawable.strategy_pattern)) }
         return binding.root
     }

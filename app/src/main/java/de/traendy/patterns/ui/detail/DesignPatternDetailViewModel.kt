@@ -24,9 +24,9 @@ class DesignPatternDetailViewModel @Inject constructor(
     private val _structureImage = MutableLiveData<Drawable>()
     val structureImage:LiveData<Drawable> = _structureImage
 
-    public fun loadDesignPatternById(id:Int =0){
+    public fun loadDesignPatternById(id:Int = 0){
         launch {
-            _designPattern.postValue(designPatternRepository.getDesignPatternById(0))
+            _designPattern.postValue(designPatternRepository.getDesignPatternById(id))
         }
     }
 

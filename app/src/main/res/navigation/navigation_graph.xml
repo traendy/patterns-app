@@ -13,11 +13,20 @@
         >
         <action
             android:id="@+id/action_mainFragment_to_designPatternDetailFragment"
-            app:destination="@id/designPatternDetailFragment" />
+            app:destination="@id/designPatternDetailFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/designPatternDetailFragment"
         android:name="de.traendy.patterns.ui.detail.DesignPatternDetailFragment"
         android:label="design_pattern_detail_fragment"
-        tools:layout="@layout/design_pattern_detail_fragment" />
+        tools:layout="@layout/design_pattern_detail_fragment" >
+        <argument
+            android:name="designPatternId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

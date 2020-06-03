@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dagger.android.support.DaggerFragment
 import de.traendy.patterns.R
+import de.traendy.patterns.data.DesignPattern
 import de.traendy.patterns.databinding.MainFragmentBinding
 import de.traendy.patterns.di.ViewModelFactory
 import de.traendy.patterns.di.ViewModelFactory_Factory
@@ -27,7 +29,6 @@ class MainFragment : DaggerFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<MainViewModel> { viewModelFactory }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         val binding = DataBindingUtil.inflate<MainFragmentBinding>(
@@ -37,10 +38,12 @@ class MainFragment : DaggerFragment() {
                 false
         )
         binding.lifecycleOwner = this
-        binding.nextButton.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_designPatternDetailFragment)
-        }
-        Log.d("TEST", viewModel.toString())
+        val adapter = DesignPatternListAdapter()
+        binding.designPatternRecyclerView.adapter = adapter
+        viewModel.designPatterns.observe(viewLifecycleOwner, Observer {
+            adapter.addAndSubmitList(it as List<DesignPattern>)
+        })
+        viewModel.loadDesignPatterns()
         return binding.root
     }
 

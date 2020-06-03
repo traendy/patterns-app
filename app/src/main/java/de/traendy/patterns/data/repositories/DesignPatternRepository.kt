@@ -14,7 +14,7 @@ class DesignPatternRepository @Inject constructor(
 ) : IDesignPatternRepository {
     override suspend fun getDesignPatternById(id: Int): DesignPattern {
         return withContext(ioDispatcher) {
-            return@withContext designPatternDataSource.getDesignPatternById(0)
+            return@withContext designPatternDataSource.getDesignPatternById(id)
         }
     }
 

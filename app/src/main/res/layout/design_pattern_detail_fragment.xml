@@ -22,6 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            imageRef="@{viewModel.designPattern.structure}"
             tools:src="@drawable/strategy_pattern"
             android:contentDescription="dummy"
             android:padding="8dp"
