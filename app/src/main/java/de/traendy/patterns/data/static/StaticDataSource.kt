@@ -16,139 +16,139 @@ class StaticDataSource :DataSource {
         DesignPattern(
             id = 2,
             title = "Abstract Factory",
-            description = "Placeholder",
+            description = "Provides an interface to create related objects without knowing their concrete classes.",
             structure = R.drawable.abstract_factory
         ),
         DesignPattern(
             id = 3,
             title = "Adapter",
-            description = "Placeholder",
+            description = "Adapter converts an interface into another and allows classes to work together that otherwise could not.",
             structure = R.drawable.adapter
         ),
         DesignPattern(
             id = 4,
             title = "Bridge",
-            description = "Placeholder",
+            description = "Decouples an abstraction from its implementation so that they can vary independently.",
             structure = R.drawable.bridge
         ),
         DesignPattern(
             id = 5,
             title = "Builder",
-            description = "Placeholder",
+            description = "Separate the construction of an object from its representation so that the same construction process can create a different representation.",
             structure = R.drawable.builder
         ),
         DesignPattern(
             id = 6,
             title = "Chain of Responsibility",
-            description = "Placeholder",
+            description = "Chains the receiving object and passes the request to a chain until one object in this chain can handle the request.",
             structure = R.drawable.chainofresponsibility
         ),
         DesignPattern(
             id = 7,
             title = "Command",
-            description = "Placeholder",
+            description = "Wraps a request in an object. Allows parameterize the request, queue, log ist and supports to reverse the request.",
             structure = R.drawable.command
         ),
         DesignPattern (
             id = 8,
             title = "Composite",
-            description = "Placeholder",
+            description = "Compose objects into tree structures. Allows to treat individual and composite objects uniformly.",
             structure = R.drawable.composite
         ),
         DesignPattern(
             id = 9,
             title = "Decorator",
-            description = "Placeholder",
+            description = "Add additional responsibilities to an object dynamically. It is an alternative to subclassing.",
             structure = R.drawable.decorator
         ),
         DesignPattern(
             id = 10,
             title = "Facade",
-            description = "Placeholder",
+            description = "Provides an interface to a set of interfaces of a complex subsystem.",
             structure = R.drawable.facade
         ),
         DesignPattern(
             id = 11,
             title = "Factory Method",
-            description = "Placeholder",
+            description = "Defines an interface for creating an object but let subclasses decide which one.",
             structure = R.drawable.factorymethod
         ),
         DesignPattern(
             id = 12,
             title = "Flyweight",
-            description = "Placeholder",
+            description = "Uses sharing to support the use of a lot of small objects by reusing them.",
             structure = R.drawable.flyweight
         ),
         DesignPattern(
             id = 13,
             title = "Interpreter",
-            description = "Placeholder",
+            description = "Combined with a grammar it can be used to interpret sentences in a language.",
             structure = R.drawable.interpreter
         ),
         DesignPattern(
             id = 14,
             title = "Iterator",
-            description = "Placeholder",
+            description = "Interface to access elements of an aggregation of objects without exposing the aggregations representation.",
             structure = R.drawable.iterator
         ),
         DesignPattern(
             id = 15,
             title = "Mediator",
-            description = "Placeholder",
+            description = "An Object that encapsulates how a set of objects interact. Thus these objects do not need to know each other but the Mediator.",
             structure = R.drawable.mediator
         ),
         DesignPattern(
             id = 16,
             title = "Memento",
-            description = "Placeholder",
+            description = "Captures an objects internal state and make it able to restore the state later.",
             structure = R.drawable.memento
         ),
         DesignPattern(
             id = 17,
             title = "Null Object",
-            description = "Placeholder",
+            description = "Tries to resolve the problem and need to use null. By defining default implementations to an object.",
             structure = R.drawable.nullobject
         ),
         DesignPattern(
             id = 18,
             title = "Observer",
-            description = "Placeholder",
+            description = "Defines a one to many dependency between objects. This allows to propagate change in one object to all its dependants.",
             structure = R.drawable.observer
         ),
         DesignPattern(
             id = 19,
             title = "Prototype",
-            description = "Placeholder",
+            description = "Using a prototypical instance of an object to create new ones by copying.",
             structure = R.drawable.prototype
         ),
         DesignPattern(
             id = 20,
             title = "Proxy",
-            description = "Placeholder",
+            description = "Provides a placeholder between to objects to control access to one of them.",
             structure = R.drawable.proxy
         ),
         DesignPattern(
             id = 21,
             title = "Singleton",
-            description = "Placeholder",
+            description = "Ensures a class has only one instance.",
             structure = R.drawable.singleton
         ),
         DesignPattern(
             id = 22,
             title = "State",
-            description = "Placeholder",
+            description = "Allows to change the behavior of an object if its internal state changes.",
             structure = R.drawable.state
         ),
         DesignPattern(
             id = 23,
             title = "Template Method",
-            description = "Placeholder",
+            description = "Defines a skeleton of an algorithm with the possibility to change parts of it.",
             structure = R.drawable.templatemethod
         ),
         DesignPattern(
             id = 24,
             title = "Visitor",
-            description = "Placeholder",
+            description = "Allows the definition of a new operation without changing the class of elements on which it operates.",
             structure = R.drawable.visitor
         )
     )
@@ -156,7 +156,7 @@ class StaticDataSource :DataSource {
     private val nullDesignPattern = DesignPattern(
         id = 17,
         title = "Null Object",
-        description = "Placeholder",
+        description = "Tries to resolve the problem and need to use null. By defining default implementations to an object.",
         structure = R.drawable.nullobject
     )
 
@@ -164,7 +164,12 @@ class StaticDataSource :DataSource {
 
     override fun getAllDesignPatterns():Collection<DesignPattern> = patterns
 
+    override fun getDesignPatterns(searchString: String): Collection<DesignPattern> {
+        return patterns.filter {
+            it.title.contains(searchString)
+        }
+    }
+
     override fun saveDesignPattern(designPattern: DesignPattern) {
-        //nothing
     }
 }

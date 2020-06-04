@@ -17,6 +17,7 @@ import de.traendy.patterns.data.DesignPattern
 import de.traendy.patterns.databinding.MainFragmentBinding
 import de.traendy.patterns.di.ViewModelFactory
 import de.traendy.patterns.di.ViewModelFactory_Factory
+import de.traendy.patterns.ui.utils.SearchTextWatcher
 import javax.inject.Inject
 
 class MainFragment : DaggerFragment() {
@@ -28,23 +29,31 @@ class MainFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<MainViewModel> { viewModelFactory }
+    private lateinit var binding:MainFragmentBinding
+    private lateinit var adapter: DesignPatternListAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val binding = DataBindingUtil.inflate<MainFragmentBinding>(
+        binding = DataBindingUtil.inflate<MainFragmentBinding>(
                 inflater,
                 R.layout.main_fragment,
                 container,
                 false
         )
         binding.lifecycleOwner = this
-        val adapter = DesignPatternListAdapter()
-        binding.designPatternRecyclerView.adapter = adapter
+        adapter = DesignPatternListAdapter()
+
         viewModel.designPatterns.observe(viewLifecycleOwner, Observer {
             adapter.addAndSubmitList(it as List<DesignPattern>)
         })
         viewModel.loadDesignPatterns()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.searchEditText.addTextChangedListener(SearchTextWatcher(viewModel::search))
+        binding.designPatternRecyclerView.adapter = adapter
     }
 
 

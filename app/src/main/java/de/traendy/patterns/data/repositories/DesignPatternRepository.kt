@@ -29,4 +29,10 @@ class DesignPatternRepository @Inject constructor(
             //nothing
         }
     }
+
+    override suspend fun getDesignPatterns(searchString: String): Collection<DesignPattern> {
+        return withContext(ioDispatcher) {
+            return@withContext designPatternDataSource.getDesignPatterns(searchString)
+        }
+    }
 }

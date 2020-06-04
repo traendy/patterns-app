@@ -23,4 +23,18 @@ class MainViewModel @Inject constructor(private val designPatternRepository: IDe
             _designPatterns.postValue(designPatternRepository.getAllDesignPatterns())
         }
     }
+
+    public fun search(searchString: String) {
+        if (::job.isInitialized) job.cancel()
+        job = launch(Dispatchers.IO)
+        {
+            yield() // stop if canceled
+            // Heavy work
+            val result = designPatternRepository.getDesignPatterns(searchString)
+            // return if canceled
+            yield()
+            // post if not canceled
+            _designPatterns.postValue(result)
+        }
+    }
 }
