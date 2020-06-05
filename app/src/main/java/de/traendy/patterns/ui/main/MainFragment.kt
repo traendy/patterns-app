@@ -12,15 +12,12 @@ import de.traendy.patterns.MainActivity
 import de.traendy.patterns.R
 import de.traendy.patterns.data.DesignPattern
 import de.traendy.patterns.ui.utils.SearchTextWatcher
+import de.traendy.patterns.ui.utils.setMenu
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.main_fragment.*
 import javax.inject.Inject
 
 class MainFragment : DaggerFragment() {
-
-    companion object {
-        fun newInstance() = MainFragment()
-    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -30,8 +27,8 @@ class MainFragment : DaggerFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.main_fragment, container, false)
+        setMenu(R.menu.top_app_bar)
         adapter = DesignPatternListAdapter()
-
         viewModel.designPatterns.observe(viewLifecycleOwner, Observer {
             adapter.addAndSubmitList(it as List<DesignPattern>)
         })
@@ -49,6 +46,7 @@ class MainFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         (activity as MainActivity).topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.search -> {viewModel.transferToSearchState(!viewModel.searchState.value!!)
