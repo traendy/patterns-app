@@ -42,3 +42,13 @@ u
 Eapp/src/main/java/de/traendy/patterns/di/DesignPatternDetailModule.kt,1/a/1abd5bcdb055d39f1d0479d6b2c1a3eed083ac9d
 
 Oapp/src/main/java/de/traendy/patterns/ui/detail/DesignPatternDetailViewModel.kt,5/0/5085ce7366a52195fcdcebb4ad32aa3f49565867
+p
+@app/src/main/java/de/traendy/patterns/ui/utils/BindingAdapter.kt,d/5/d570ce6512355e8f1778e715881719b7cfb269d1
+y
+Iapp/src/main/java/de/traendy/patterns/ui/main/DesignPatternListAdapter.kt,e/a/eae5cd2e3e5228a5387e54c2dfd99f4e0a2759e2
+t
+Dapp/src/main/java/de/traendy/patterns/ui/utils/TextWatcherAdapter.kt,6/1/61ca7062f062436a7141c9beb8495c3cdca4c533
+s
+Capp/src/main/java/de/traendy/patterns/ui/utils/SearchTextWatcher.kt,c/7/c746e605adbf901d10a081b161e0c8701cb9773f
+u
+Eapp/src/main/java/de/traendy/patterns/data/static/StaticDataSource.kt,5/b/5b720711d3ca59350e23f977ab78a53411f08247

@@ -24,6 +24,9 @@ class MainViewModel @Inject constructor(private val designPatternRepository: IDe
         }
     }
 
+    private val _searchState = MutableLiveData(false)
+    val searchState: LiveData<Boolean> = _searchState
+
     public fun search(searchString: String) {
         if (::job.isInitialized) job.cancel()
         job = launch(Dispatchers.IO)
@@ -36,5 +39,9 @@ class MainViewModel @Inject constructor(private val designPatternRepository: IDe
             // post if not canceled
             _designPatterns.postValue(result)
         }
+    }
+
+    fun transferToSearchState(isActive: Boolean){
+        _searchState.postValue(isActive)
     }
 }

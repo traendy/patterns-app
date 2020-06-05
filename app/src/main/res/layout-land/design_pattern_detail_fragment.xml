@@ -9,22 +9,26 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.detail.DesignPatternDetailFragment">
+        tools:context=".ui.detail.DesignPatternDetailFragment"
+        >
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
         <ImageView
             android:id="@+id/structureImage"
             imageRef="@{viewModel.designPattern.structure}"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:contentDescription="dummy"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/strategy_pattern" />
 
         <TextView
@@ -34,17 +38,13 @@
             android:padding="8dp"
             android:text="@{viewModel.designPattern.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/structureImage" />
+ />
 
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/cardview_dark_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title" />
 
         <TextView
@@ -53,9 +53,8 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@{viewModel.designPattern.description}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 </layout>
