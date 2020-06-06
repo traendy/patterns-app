@@ -1,13 +1,22 @@
 package de.traendy.patterns.data
 
+import androidx.annotation.NonNull
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
-
+@Entity(tableName = "design_pattern_table")
 data class DesignPattern(
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    @NonNull
     val id: Int = 0,
+    @ColumnInfo(name = "title")
+    @NonNull
     val title: String = "",
+    @ColumnInfo(name = "description")
+    @NonNull
     val description: String = "",
-    val thumb: Int? = null,
-    val structure: Int? = null
+    @ColumnInfo(name = "structure")
+    val structure: String? = null
 )

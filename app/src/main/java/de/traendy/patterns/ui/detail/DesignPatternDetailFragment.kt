@@ -43,7 +43,6 @@ class DesignPatternDetailFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.structureImageContainer.addDragView(binding.structureImage)
     }
 

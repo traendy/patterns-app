@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import de.traendy.patterns.data.DesignPattern
 import de.traendy.patterns.data.repositories.IDesignPatternRepository
+import de.traendy.patterns.data.static.StaticDesignPatternDataSource
 import kotlinx.coroutines.*
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext

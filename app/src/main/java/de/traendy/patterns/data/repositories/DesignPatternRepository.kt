@@ -1,6 +1,6 @@
 package de.traendy.patterns.data.repositories
 
-import de.traendy.patterns.data.DataSource
+import de.traendy.patterns.data.DesignPatternDataSource
 import de.traendy.patterns.data.DesignPattern
 import de.traendy.patterns.di.PatternApplicationModule
 import kotlinx.coroutines.CoroutineDispatcher
@@ -9,30 +9,30 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class DesignPatternRepository @Inject constructor(
-    @PatternApplicationModule.DesignPatternDataSource private val designPatternDataSource: DataSource,
+    @PatternApplicationModule.DesignPatternDataSourceLocal private val designPatternDesignPatternDataSource: DesignPatternDataSource,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : IDesignPatternRepository {
     override suspend fun getDesignPatternById(id: Int): DesignPattern {
         return withContext(ioDispatcher) {
-            return@withContext designPatternDataSource.getDesignPatternById(id)
+            return@withContext designPatternDesignPatternDataSource.getDesignPatternById(id)
         }
     }
 
     override suspend fun getAllDesignPatterns(): Collection<DesignPattern> {
         return withContext(ioDispatcher) {
-            return@withContext designPatternDataSource.getAllDesignPatterns()
+            return@withContext designPatternDesignPatternDataSource.getAllDesignPatterns()
         }
     }
 
     override suspend fun saveDesignPattern(designPattern: DesignPattern) {
         withContext(ioDispatcher) {
-            //nothing
+            designPatternDesignPatternDataSource.saveDesignPattern(designPattern)
         }
     }
 
     override suspend fun getDesignPatterns(searchString: String): Collection<DesignPattern> {
         return withContext(ioDispatcher) {
-            return@withContext designPatternDataSource.getDesignPatterns(searchString)
+            return@withContext designPatternDesignPatternDataSource.getDesignPatternsBySearchString(searchString)
         }
     }
 }
