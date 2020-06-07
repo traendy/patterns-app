@@ -1,6 +1,5 @@
 package de.traendy.patterns.data.static
 
-import de.traendy.patterns.R
 import de.traendy.patterns.data.DesignPatternDataSource
 import de.traendy.patterns.data.DesignPattern
 

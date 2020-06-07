@@ -12,6 +12,7 @@ import de.traendy.patterns.MainActivity
 import de.traendy.patterns.R
 import de.traendy.patterns.data.DesignPattern
 import de.traendy.patterns.ui.utils.SearchTextWatcher
+import de.traendy.patterns.ui.utils.setFavoriteIcon
 import de.traendy.patterns.ui.utils.setMenu
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -51,9 +52,17 @@ class MainFragment : DaggerFragment() {
             when (it.itemId) {
                 R.id.search -> {viewModel.transferToSearchState(!viewModel.searchState.value!!)
                 true}
+                R.id.favorite -> {
+                    viewModel.transferToFilterState(!viewModel.filterFavorites.value!!)
+                    true
+                }
                 else -> false
             }
         }
+        viewModel.filterFavorites.observe(viewLifecycleOwner, Observer {
+            viewModel.filterFavorites(it)
+            setFavoriteIcon(it)
+        })
         searchEditText.addTextChangedListener(SearchTextWatcher(viewModel::search))
         designPatternRecyclerView.adapter = adapter
     }

@@ -18,5 +18,7 @@ data class DesignPattern(
     @NonNull
     val description: String = "",
     @ColumnInfo(name = "structure")
-    val structure: String? = null
+    val structure: String? = null,
+    @ColumnInfo(name = "favorite")
+    val isFavorite:Boolean = false
 )

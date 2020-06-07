@@ -35,4 +35,15 @@ class DesignPatternRepository @Inject constructor(
             return@withContext designPatternDesignPatternDataSource.getDesignPatternsBySearchString(searchString)
         }
     }
+
+    override suspend fun getFavoriteDesignPatterns(isFavorite: Boolean): Collection<DesignPattern> {
+        return withContext(ioDispatcher) {
+            if (isFavorite) {
+                return@withContext designPatternDesignPatternDataSource.getAllDesignPatterns()
+                    .filter { it.isFavorite }
+            } else {
+                return@withContext designPatternDesignPatternDataSource.getAllDesignPatterns()
+            }
+        }
+    }
 }

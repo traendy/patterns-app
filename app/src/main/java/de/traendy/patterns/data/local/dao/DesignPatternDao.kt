@@ -11,7 +11,7 @@ interface DesignPatternDao {
     @Query("DELETE FROM design_pattern_table")
     suspend fun deleteAll()
 
-    @Query("SELECT * FROM design_pattern_table ORDER BY title DESC")
+    @Query("SELECT * FROM design_pattern_table ORDER BY title ASC")
     suspend fun getAllDesignPatterns(): List<DesignPattern>
 
     @Delete

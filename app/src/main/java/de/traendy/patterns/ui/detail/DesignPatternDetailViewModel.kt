@@ -24,9 +24,20 @@ class DesignPatternDetailViewModel @Inject constructor(
     private val _structureImage = MutableLiveData<Drawable>()
     val structureImage:LiveData<Drawable> = _structureImage
 
-    public fun loadDesignPatternById(id:Int = 0){
+    fun loadDesignPatternById(id:Int = 0){
         launch {
             _designPattern.postValue(designPatternRepository.getDesignPatternById(id))
+        }
+    }
+
+    fun updateFavoriteState() {
+        val pattern = designPattern.value
+        pattern?.let {
+            val patternUpdated = pattern.copy(isFavorite = !pattern.isFavorite)
+            launch { designPatternRepository.saveDesignPattern(patternUpdated)
+            }.invokeOnCompletion {
+                loadDesignPatternById(pattern.id)
+            }
         }
     }
 

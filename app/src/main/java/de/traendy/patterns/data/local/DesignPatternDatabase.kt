@@ -9,7 +9,7 @@ import de.traendy.patterns.data.local.dao.DesignPatternDao
     entities = [
         DesignPattern::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 abstract class DesignPatternDatabase:RoomDatabase() {
