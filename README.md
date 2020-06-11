@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Bitrise Status](https://app.bitrise.io/app/592faae9bcad9d95/status.svg?token=FX5OIlR9CjuhIMwWyyowmg)]
+![Bitrise Status](https://app.bitrise.io/app/592faae9bcad9d95/status.svg?token=FX5OIlR9CjuhIMwWyyowmg)
 
 # patterns-app
 
